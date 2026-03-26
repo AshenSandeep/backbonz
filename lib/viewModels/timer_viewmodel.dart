@@ -58,25 +58,32 @@ class TimerViewModel extends GetxController {
     final endTime = DateTime.now();
     final user = FirebaseAuth.instance.currentUser;
 
-    if (user != null && _startTime != null && _elapsed.value.inSeconds > 0) {
-      final session = SessionModel(
-        userId: user.uid,
-        startTime: _startTime!,
-        endTime: endTime,
-        duration: _elapsed.value,
-      );
-      await _sessionService.saveSession(session);
+    try {
+      if (user != null && _startTime != null && _elapsed.value.inSeconds > 0) {
+        final session = SessionModel(
+          userId: user.uid,
+          startTime: _startTime!,
+          endTime: endTime,
+          duration: _elapsed.value,
+        );
+        await _sessionService.saveSession(session);
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      reset();
     }
-
-    _reset();
   }
 
-  void _reset() {
+  void reset() {
+    _ticker?.cancel();
     _status.value = TimerStatus.idle;
     _elapsed.value = Duration.zero;
     _startTime = null;
     _pausedDuration = Duration.zero;
     _pausedAt = null;
+    Get.snackbar('DEBUG', 'reset() called, status now: ${_status.value}');
+
   }
 
   @override

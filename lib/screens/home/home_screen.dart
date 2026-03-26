@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () async {
+                      timerViewModel.reset();
                       await authViewModel.signOut();
                       Get.offAll(() => const LoginScreen());
                     },
@@ -185,6 +186,7 @@ class _TimerControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      print("Start Session is pressed");
       if (timer.isIdle) {
         return PrimaryButton(
           label: '▶  Start Session',
@@ -207,7 +209,7 @@ class _TimerControls extends StatelessWidget {
             Expanded(
               child: PrimaryButton(
                 label: '⏹  Stop',
-                onPressed: () => timer.stop(),
+                onPressed: () async => await timer.stop(),
                 color: AppColors.error,
               ),
             ),
@@ -229,7 +231,7 @@ class _TimerControls extends StatelessWidget {
           Expanded(
             child: PrimaryButton(
               label: '⏹  Stop',
-              onPressed: () => timer.stop(),
+              onPressed: () async => await timer.stop(),
               color: AppColors.error,
             ),
           ),

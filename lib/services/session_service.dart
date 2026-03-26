@@ -23,10 +23,13 @@ class SessionService {
         .collection(_collection)
         .where('userId', isEqualTo: userId)
         .where('startTime', isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
-        .orderBy('startTime', descending: true)
         .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map((doc) => SessionModel.fromDocument(doc))
-        .toList());
+        .map((snapshot) {
+      final sessions = snapshot.docs
+          .map((doc) => SessionModel.fromDocument(doc))
+          .toList();
+      sessions.sort((a, b) => b.startTime.compareTo(a.startTime));
+      return sessions;
+    });
   }
 }
