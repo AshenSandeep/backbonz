@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575225352755",
+    "project_id": "backbonz-d9592",
+    "storage_bucket": "backbonz-d9592.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575225352755:android:d0cf4f7f3be9d62e5d4946",
+        "android_client_info": {
+          "package_name": "com.example.backbonz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLJzhRjysUYoBtZ9cdX7h66bRahELOj_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

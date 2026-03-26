@@ -1,16 +1,25 @@
-# backbonz
+# BackBonz
 
-A new Flutter project.
+Brace wear tracking app for teenagers with scoliosis.
 
-## Getting Started
+## Setup
 
-This project is a starting point for a Flutter application.
+1. Clone the repo
+2. Create a `.env` file in the root with your Firebase credentials:
+```
+FIREBASE_API_KEY_ANDROID=your_key
+FIREBASE_APP_ID_ANDROID=your_app_id
+FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_bucket
+```
+3. Run using:
+```
+run.bat
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Architecture
+- **GetX** for state management and navigation
+- **MVVM** pattern — screens → viewModels → services
+- **Firebase Auth** for authentication
+- **Cloud Firestore** for session storage
