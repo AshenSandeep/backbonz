@@ -82,7 +82,6 @@ class TimerViewModel extends GetxController {
     _startTime = null;
     _pausedDuration = Duration.zero;
     _pausedAt = null;
-    Get.snackbar('DEBUG', 'reset() called, status now: ${_status.value}');
 
   }
 
