@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // Get the controller — no context needed
   final AuthViewModel _authViewModel = Get.find<AuthViewModel>();
 
   @override
@@ -38,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     if (success) {
-      // GetX navigation — no context needed
       Get.offAll(() => const HomeScreen());
     }
   }
@@ -56,7 +54,6 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 40),
 
-                // Logo / Title
                 Center(
                   child: Column(
                     children: [
@@ -149,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 24),
 
-                // Error message — Obx rebuilds only this widget
+                // Error message
                 Obx(() {
                   if (_authViewModel.errorMessage == null) {
                     return const SizedBox.shrink();
@@ -184,7 +181,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 }),
 
-                // Login button — Obx rebuilds only this widget
                 Obx(() => PrimaryButton(
                   label: 'Login',
                   isLoading: _authViewModel.isLoading,
